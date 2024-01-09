@@ -1,23 +1,17 @@
-# Use the official Node.js image as the base image
-FROM node:14-alpine
+FROM node:18
 
-# Set the working directory inside the container
 WORKDIR /app
 
-# Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
+RUN npm install --legacy-peer-deps
 
-# Install dependencies
-RUN npm install
-
-# Copy the entire project to the working directory
 COPY . .
+
+# Ensure that the npm run build command has all the necessary dependencies available
+RUN npm install
 
 # Build the Next.js app
 RUN npm run build
 
-# Expose the port Next.js will run on
-EXPOSE 4000
-
-# Command to start the application
+# Run the app
 CMD ["npm", "start"]
