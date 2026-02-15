@@ -21,16 +21,19 @@ const ProfileText = ({ visible, titleId }) => (
       <DecoderText text="Hi there" start={visible} delay={500} />
     </Heading>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
-      I’m Prerak, currently I live in Bengaluru working as a Software Development Intern at{' '}
-      Walmart Global Tech. My projects include UX design, UI
-      animations, and icon illustration. Being comfortable with code allows me to rapidly
-      prototype and validate experiences. If you’re interested in the tools and software I
-      use check out my <Link href="/uses">uses page</Link>.
+      I'm Prerak, a Software Development Engineer II at Walmart Global Tech, where I build
+      scalable solutions for retail operations. I graduated from IIIT Lucknow with a B.Tech
+      in Information Technology (CGPA: 8.6/10.0). My expertise spans full-stack development,
+      designing robust APIs, building real-time dashboards, and automating workflows to
+      improve system reliability and efficiency.
     </Text>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
-      In my spare time I like to practice New technologies, play video games, and{' '}
-      <Link href="/projects/volkihar-knight">make highscores</Link>. I’m always down for hearing
-      about new projects, so feel free to drop me a line.
+      I'm passionate about open source and was selected for{' '}
+      <Link href="https://summerofcode.withgoogle.com/">Google Summer of Code 2022</Link> with
+      ScoreLabs. I've contributed to projects like InternetArchive, AgoWrite, and CircuitVerse.
+      In my spare time, I explore new technologies, work on side projects, and compete in
+      competitive programming. If you're interested in the tools and software I use, check
+      out my <Link href="/uses">uses page</Link>.
     </Text>
   </Fragment>
 );
@@ -59,7 +62,7 @@ export const Profile = ({ id, visible, sectionRef }) => {
                 secondary
                 className={styles.button}
                 data-visible={visible}
-                href="/lolas"
+                href="/contact"
                 icon="send"
               >
                 Send me a message

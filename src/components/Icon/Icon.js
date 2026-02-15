@@ -6,9 +6,11 @@ import Check from './svg/check.svg';
 import ChevronRight from './svg/chevron-right.svg';
 import Close from './svg/close.svg';
 import Copy from './svg/copy.svg';
+import Email from './svg/email.svg';
 import Error from './svg/error.svg';
 import Figma from './svg/figma.svg';
 import Github from './svg/github.svg';
+import Linkedin from './svg/linkedin.svg';
 import Link from './svg/link.svg';
 import Menu from './svg/menu.svg';
 import Pause from './svg/pause.svg';
@@ -23,9 +25,11 @@ export const icons = {
   chevronRight: ChevronRight,
   close: Close,
   copy: Copy,
+  email: Email,
   error: Error,
   figma: Figma,
   github: Github,
+  linkedin: Linkedin,
   link: Link,
   menu: Menu,
   pause: Pause,

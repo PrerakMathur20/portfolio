@@ -8,18 +8,15 @@ and graphic assets behind this site humanstxt.org.
 
 _______________________________________________________________________________
 
-DESIGNER | デザイナー
+DEVELOPER | 開発者
 
-Hamish Williams
-Hand crafted design & web development
+Prerak Mathur
+Software Development Engineer II
+Walmart Global Tech
 
-Design tools:
-Figma
-Photoshop
-Blender
-
-twitter.com/hamishmw
-github.com/hamishmw
+linkedin.com/in/Prerak_Mathur
+github.com/PrerakMathur20
+prerak.tech
 
 _______________________________________________________________________________
 
@@ -27,8 +24,12 @@ TECHNOLOGY | テクノロジー
 
 React
 Next.js
+Node.js
 Three.js
 Framer Motion
+Apache Kafka
+Spring Boot
+GraphQL
 
 _______________________________________________________________________________
 

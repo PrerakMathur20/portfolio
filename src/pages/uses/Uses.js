@@ -23,7 +23,7 @@ export const Uses = () => {
     <Fragment>
       <Meta
         title="Uses"
-        description="A list of hardware and software I use to do my thing"
+        description="A list of tools, frameworks, and technologies I use for development"
       />
       <ProjectContainer className={styles.uses}>
         <ProjectBackground
@@ -33,31 +33,35 @@ export const Uses = () => {
         />
         <ProjectHeader
           title="Uses"
-          description="A somewhat comprehensive list of tools, apps, hardware, and more that I use on a daily basis to design and code things. And yeah, that is a Johnny Mnemonic GIF in the background."
+          description="A comprehensive list of tools, frameworks, languages, and technologies I use on a daily basis to build scalable software solutions."
         />
         <ProjectSection padding="none" className={styles.section}>
           <ProjectSectionContent>
             <ProjectTextRow width="m">
-              <ProjectSectionHeading>Design</ProjectSectionHeading>
+              <ProjectSectionHeading>Languages & Frameworks</ProjectSectionHeading>
               <ProjectSectionText as="div">
                 <List>
                   <ListItem>
-                    <Link href="https://www.figma.com">Figma</Link> is my primary tool for
-                    UI design these days. Made the switch from Sketch in 2020 and haven’t
-                    looked back. I’ve also created{' '}
-                    <Link href="https://www.figma.com/@hamish">a few plugins</Link> that
-                    you can install.
+                    <Link href="https://nodejs.org/">Node.js</Link> is my go-to runtime for
+                    building scalable backend services and APIs. I use it extensively at
+                    Walmart Global Tech for microservices architecture.
                   </ListItem>
                   <ListItem>
-                    Any motion graphics I create are created in Adobe After Effects. So
-                    far I haven’t found a non-Adobe product that’s as good. If anyone has
-                    suggestions please <Link href="/contact">message me</Link>.
+                    For Java development, I work with{' '}
+                    <Link href="https://spring.io/projects/spring-boot">Spring Boot</Link>{' '}
+                    to build robust enterprise applications with strict authorization and
+                    access governance.
                   </ListItem>
                   <ListItem>
-                    For any 3D models I use{' '}
-                    <Link href="https://www.blender.org/">Blender</Link>. Since 2.8 it’s
-                    become way simpler to use and in a lot of ways better than expensive
-                    paid tools like 3DS Max or Maya.
+                    <Link href="https://reactjs.org/">React</Link> and{' '}
+                    <Link href="https://nextjs.org/">Next.js</Link> are my primary choices
+                    for building modern, performant web applications with great SEO and user
+                    experience.
+                  </ListItem>
+                  <ListItem>
+                    I use <Link href="https://kafka.apache.org/">Apache Kafka</Link> for
+                    building event-driven architectures and real-time data streaming
+                    solutions. I've even developed a reusable Kafka utility library.
                   </ListItem>
                 </List>
               </ProjectSectionText>
@@ -67,46 +71,40 @@ export const Uses = () => {
         <ProjectSection padding="none" className={styles.section}>
           <ProjectSectionContent>
             <ProjectTextRow width="m">
-              <ProjectSectionHeading>Development</ProjectSectionHeading>
+              <ProjectSectionHeading>Development Tools</ProjectSectionHeading>
               <ProjectSectionText as="div">
                 <List>
                   <ListItem>
                     I use{' '}
                     <Link href="https://code.visualstudio.com/">Visual Studio Code</Link>{' '}
-                    as my text editor, with the Atom One Dark theme and Operator Mono as
-                    my typeface of choice.
+                    as my primary code editor for most development work, with Cursor for
+                    AI-assisted coding.
                   </ListItem>
                   <ListItem>
-                    Firefox is my main browser for both development and general use.
+                    <Link href="https://www.docker.com/">Docker</Link> is essential for
+                    containerizing applications and ensuring consistent environments across
+                    development and production.
                   </ListItem>
                   <ListItem>
-                    <Link href="https://reactjs.org/">React</Link> is my front end
-                    Javascript library of choice. The component-centric mental model is
-                    the first thing that truly made sense to me as a designer.
+                    For API development and testing, I work with{' '}
+                    <Link href="https://graphql.org/">GraphQL</Link> to build efficient,
+                    type-safe APIs that reduce over-fetching and improve performance.
                   </ListItem>
                   <ListItem>
-                    For 3D effects and image shaders I use{' '}
-                    <Link href="https://threejs.org/">three.js</Link>. It has a bit of a
-                    learning curve but you can do some really powerful stuff with it.
+                    I use <Link href="https://cloud.google.com/">Google Cloud Platform</Link>{' '}
+                    for deploying scalable applications and managing cloud infrastructure.
+                    I've worked extensively with GCP services during my internship projects.
                   </ListItem>
                   <ListItem>
-                    For CSS I’ve used a myriad pre-processors and css-in-js solutions like
-                    styled-components, but these days I’m using vanilla CSS with{' '}
-                    <Link href="https://postcss.org/">PostCSS</Link> to get upcoming CSS
-                    features today.
+                    <Link href="https://www.cloudflare.com/">Cloudflare</Link> Argo Tunnels
+                    are my choice for secure remote connectivity without exposing network
+                    ports, especially for self-hosted solutions.
                   </ListItem>
                   <ListItem>
-                    For Javascript animations I use{' '}
-                    <Link href="https://www.framer.com/motion/">Framer Motion</Link>, it’s
-                    a great way to add spring animations to React and three.js.
-                  </ListItem>
-                  <ListItem>
-                    For building and testing UI components in isolation I use{' '}
-                    <Link href="https://storybook.js.org/">Storybook</Link>. Check out the{' '}
-                    <Link href="https://storybook.hamishw.com">
-                      storybook for this website
-                    </Link>
-                    .
+                    For version control and collaboration, I use{' '}
+                    <Link href="https://git-scm.com/">Git</Link> and{' '}
+                    <Link href="https://github.com/">GitHub</Link>. I'm an active open
+                    source contributor with projects like InternetArchive and CircuitVerse.
                   </ListItem>
                 </List>
               </ProjectSectionText>
@@ -116,48 +114,40 @@ export const Uses = () => {
         <ProjectSection padding="none" className={styles.section}>
           <ProjectSectionContent>
             <ProjectTextRow stretch width="m">
-              <ProjectSectionHeading>Hardware</ProjectSectionHeading>
+              <ProjectSectionHeading>Databases & Cloud</ProjectSectionHeading>
               <Table>
                 <TableBody>
                   <TableRow>
-                    <TableHeadCell>CPU</TableHeadCell>
-                    <TableCell>AMD Ryzen 5800x</TableCell>
+                    <TableHeadCell>Relational DB</TableHeadCell>
+                    <TableCell>PostgreSQL, MySQL</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableHeadCell>GPU</TableHeadCell>
-                    <TableCell>MSI Gaming X Trio RTX 3080</TableCell>
+                    <TableHeadCell>Query Language</TableHeadCell>
+                    <TableCell>SQL, GraphQL</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableHeadCell>Memory</TableHeadCell>
-                    <TableCell>GSkill 32GB DDR4 3600mhz CAS 18</TableCell>
+                    <TableHeadCell>Message Queue</TableHeadCell>
+                    <TableCell>Apache Kafka</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableHeadCell>Motherboard</TableHeadCell>
-                    <TableCell>MSI B550 Tomahawk</TableCell>
+                    <TableHeadCell>Cloud Platform</TableHeadCell>
+                    <TableCell>Google Cloud Platform (GCP)</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableHeadCell>Monitor</TableHeadCell>
-                    <TableCell>1440p IPS 144hz LG 27GL850</TableCell>
+                    <TableHeadCell>Containerization</TableHeadCell>
+                    <TableCell>Docker</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableHeadCell>Keyboard</TableHeadCell>
-                    <TableCell>Logitech MX Keys</TableCell>
+                    <TableHeadCell>API Design</TableHeadCell>
+                    <TableCell>REST, GraphQL</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableHeadCell>Mouse</TableHeadCell>
-                    <TableCell>Logitech G403</TableCell>
+                    <TableHeadCell>Version Control</TableHeadCell>
+                    <TableCell>Git, GitHub</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableHeadCell>Laptop</TableHeadCell>
-                    <TableCell>Macbook Pro 14″ (2022 M1 Max)</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableHeadCell>Headphones</TableHeadCell>
-                    <TableCell>Audio Technica ATH-M50x/Apple Airpods</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableHeadCell>Microphone</TableHeadCell>
-                    <TableCell>Blue Yeti</TableCell>
+                    <TableHeadCell>Streaming</TableHeadCell>
+                    <TableCell>Plex, Cloudflare Argo Tunnels</TableCell>
                   </TableRow>
                 </TableBody>
               </Table>

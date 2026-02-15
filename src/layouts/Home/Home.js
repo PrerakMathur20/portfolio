@@ -18,8 +18,8 @@ import { ProjectSummary } from 'layouts/Home/ProjectSummary';
 import { useEffect, useRef, useState } from 'react';
 import styles from './Home.module.css';
 
-// Jobs related to software development and coder
-const disciplines = ['Designer', 'Tester', 'Coder', 'Programmer', 'Engineer', 'Architect'];
+// Roles and skills
+const disciplines = ['Backend Engineer', 'Full-Stack Developer', 'API Designer', 'Open Source Contributor', 'Problem Solver'];
 
 export const Home = () => {
   const [visibleSections, setVisibleSections] = useState([]);
@@ -69,9 +69,8 @@ export const Home = () => {
   return (
     <div className={styles.home}>
       <Meta
-        title="Designer + Developer"
-        description="Design portfolio of Prerak Mathur — a product designer working on web & mobile
-          apps with a focus on motion, experience design, and accessibility."
+        title="Software Developer + Engineer"
+        description="Portfolio of Prerak Mathur — a Software Development Engineer II at Walmart Global Tech, specializing in full-stack development, scalable systems, and open source contributions."
       />
       <Intro
         id="intro"
@@ -84,13 +83,13 @@ export const Home = () => {
         sectionRef={projectOne}
         visible={visibleSections.includes(projectOne.current)}
         index={1}
-        title="Faculty Recruitment Portal for IIITL"
-        description="Designing a platform to help educators build better online courseware"
+        title="Returns Order Lifecycle Dashboard"
+        description="Built a comprehensive returns tracking dashboard using Node.js, ReactJS, and GraphQL to increase visibility and standardize returns processes for associates"
         buttonText="View project"
         buttonLink="/projects/smart-sparrow"
         model={{
           type: 'laptop',
-          alt: 'Smart Sparrow lesson builder',
+          alt: 'Returns dashboard interface',
           textures: [
             {
               srcSet: [sprTexture, sprTextureLarge],
@@ -105,13 +104,13 @@ export const Home = () => {
         sectionRef={projectTwo}
         visible={visibleSections.includes(projectTwo.current)}
         index={2}
-        title="Video game progress tracking"
-        description="Design and development for a video game tracking app built in React Native"
-        buttonText="View website"
-        buttonLink="https://gamestack.hamishw.com"
+        title="Self-Hosted Cloud Streaming & Storage"
+        description="Built a secure, self-hosted streaming and storage platform with Plex, Docker, and Cloudflare Argo Tunnels for encrypted cross-device access and scalable data management"
+        buttonText="View project"
+        buttonLink="/projects/smart-sparrow"
         model={{
           type: 'phone',
-          alt: 'App login screen',
+          alt: 'Cloud storage app',
           textures: [
             {
               srcSet: [gamestackTexture, gamestackTextureLarge],
@@ -129,13 +128,13 @@ export const Home = () => {
         sectionRef={projectThree}
         visible={visibleSections.includes(projectThree.current)}
         index={3}
-        title="Biomedical image collaboration"
-        description="Increasing the amount of collaboration in Slice, an app for biomedical imaging"
+        title="Drone Development & Data Classification"
+        description="Led a government-funded project to design an affordable open-source Quad-copter for agricultural data analysis using Machine Learning and Web App integration"
         buttonText="View project"
         buttonLink="/projects/slice"
         model={{
           type: 'laptop',
-          alt: 'Annotating a biomedical image in the Slice app',
+          alt: 'Drone data analysis dashboard',
           textures: [
             {
               srcSet: [sliceTexture, sliceTextureLarge],
