@@ -21,19 +21,16 @@ const ProfileText = ({ visible, titleId }) => (
       <DecoderText text="Hi there" start={visible} delay={500} />
     </Heading>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
-      I'm Prerak, a Software Development Engineer II at Walmart Global Tech, where I build
-      scalable solutions for retail operations. I graduated from IIIT Lucknow with a B.Tech
-      in Information Technology (CGPA: 8.6/10.0). My expertise spans full-stack development,
-      designing robust APIs, building real-time dashboards, and automating workflows to
-      improve system reliability and efficiency.
+      I'm Prerak, a software developer who loves building things that make a difference. 
+      Whether it's creating tools for farmers, building music platforms, or setting up 
+      self-hosted solutions, I'm always tinkering with something new. I believe great 
+      software comes from understanding real problems and crafting thoughtful solutions.
     </Text>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
-      I'm passionate about open source and was selected for{' '}
-      <Link href="https://summerofcode.withgoogle.com/">Google Summer of Code 2022</Link> with
-      ScoreLabs. I've contributed to projects like InternetArchive, AgoWrite, and CircuitVerse.
-      In my spare time, I explore new technologies, work on side projects, and compete in
-      competitive programming. If you're interested in the tools and software I use, check
-      out my <Link href="/uses">uses page</Link>.
+      When I'm not coding, you'll find me exploring new tech, contributing to open source 
+      projects, or diving into competitive programming challenges. I'm a big believer in 
+      learning by doing and sharing what I learn along the way. If you want to chat about 
+      tech, collaborate on a project, or just say hi, feel free to reach out!
     </Text>
   </Fragment>
 );

@@ -28,10 +28,11 @@ export const Home = () => {
   const projectOne = useRef();
   const projectTwo = useRef();
   const projectThree = useRef();
+  const projectFour = useRef();
   const details = useRef();
 
   useEffect(() => {
-    const sections = [intro, projectOne, projectTwo, projectThree, details];
+    const sections = [intro, projectOne, projectTwo, projectThree, projectFour, details];
 
     const sectionObserver = new IntersectionObserver(
       (entries, observer) => {
@@ -83,31 +84,10 @@ export const Home = () => {
         sectionRef={projectOne}
         visible={visibleSections.includes(projectOne.current)}
         index={1}
-        title="Returns Order Lifecycle Dashboard"
-        description="Built a comprehensive returns tracking dashboard using Node.js, ReactJS, and GraphQL to increase visibility and standardize returns processes for associates"
-        buttonText="View project"
-        buttonLink="/projects/smart-sparrow"
-        model={{
-          type: 'laptop',
-          alt: 'Returns dashboard interface',
-          textures: [
-            {
-              srcSet: [sprTexture, sprTextureLarge],
-              placeholder: sprTexturePlaceholder,
-            },
-          ],
-        }}
-      />
-      <ProjectSummary
-        id="project-2"
-        alternate
-        sectionRef={projectTwo}
-        visible={visibleSections.includes(projectTwo.current)}
-        index={2}
         title="Self-Hosted Cloud Streaming & Storage"
         description="Built a secure, self-hosted streaming and storage platform with Plex, Docker, and Cloudflare Argo Tunnels for encrypted cross-device access and scalable data management"
         buttonText="View project"
-        buttonLink="/projects/smart-sparrow"
+        buttonLink="/projects/cloud-storage"
         model={{
           type: 'phone',
           alt: 'Cloud storage app',
@@ -124,17 +104,59 @@ export const Home = () => {
         }}
       />
       <ProjectSummary
+        id="project-2"
+        alternate
+        sectionRef={projectTwo}
+        visible={visibleSections.includes(projectTwo.current)}
+        index={2}
+        title="Drone Development & Data Classification"
+        description="Led a government-funded project to design an affordable open-source quadcopter for agricultural data analysis using Machine Learning. Patent Pending."
+        buttonText="View project"
+        buttonLink="/projects/drone-project"
+        model={{
+          type: 'laptop',
+          alt: 'Drone data analysis dashboard',
+          textures: [
+            {
+              srcSet: [sliceTexture, sliceTextureLarge],
+              placeholder: sliceTexturePlaceholder,
+            },
+          ],
+        }}
+      />
+      <ProjectSummary
         id="project-3"
         sectionRef={projectThree}
         visible={visibleSections.includes(projectThree.current)}
         index={3}
-        title="Drone Development & Data Classification"
-        description="Led a government-funded project to design an affordable open-source Quad-copter for agricultural data analysis using Machine Learning and Web App integration"
+        title="Geet-Hub: Open Source Music Platform"
+        description="An open-source platform for music creators to edit, remix, and publish their songs with collaborative features and professional-grade audio tools"
         buttonText="View project"
-        buttonLink="/projects/slice"
+        buttonLink="/projects/geet-hub"
         model={{
           type: 'laptop',
-          alt: 'Drone data analysis dashboard',
+          alt: 'Geet-Hub music editor interface',
+          textures: [
+            {
+              srcSet: [sprTexture, sprTextureLarge],
+              placeholder: sprTexturePlaceholder,
+            },
+          ],
+        }}
+      />
+      <ProjectSummary
+        id="project-4"
+        alternate
+        sectionRef={projectFour}
+        visible={visibleSections.includes(projectFour.current)}
+        index={4}
+        title="Faculty Recruitment Portal - IIIT Lucknow"
+        description="Comprehensive recruitment management system for IIIT Lucknow, streamlining the faculty hiring process with automated workflows and real-time tracking"
+        buttonText="View project"
+        buttonLink="/projects/faculty-portal"
+        model={{
+          type: 'laptop',
+          alt: 'Faculty recruitment portal dashboard',
           textures: [
             {
               srcSet: [sliceTexture, sliceTextureLarge],
