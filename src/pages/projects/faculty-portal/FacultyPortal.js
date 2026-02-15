@@ -1,11 +1,9 @@
 import { Footer } from 'components/Footer';
-import { Image } from 'components/Image';
 import { Meta } from 'components/Meta';
 import {
   ProjectBackground,
   ProjectContainer,
   ProjectHeader,
-  ProjectImage,
   ProjectSection,
   ProjectSectionColumns,
   ProjectSectionContent,
@@ -14,7 +12,6 @@ import {
   ProjectTextRow,
 } from 'layouts/Project';
 import { Fragment } from 'react';
-import { media } from 'utils/style';
 import styles from './FacultyPortal.module.css';
 
 // Placeholder imports - replace these with your actual project screenshots
@@ -73,7 +70,7 @@ export const FacultyPortal = () => {
             <ProjectTextRow>
               <ProjectSectionHeading>The Challenge</ProjectSectionHeading>
               <ProjectSectionText>
-                IIIT Lucknow's traditional recruitment process involved manual handling of
+                IIIT Lucknow&apos;s traditional recruitment process involved manual handling of
                 hundreds of applications, physical document verification, and coordination
                 across multiple departments. This led to delays, miscommunication, and
                 difficulty in tracking application status.
@@ -355,7 +352,7 @@ export const FacultyPortal = () => {
               <ProjectSectionHeading>Project Impact</ProjectSectionHeading>
               <ProjectSectionText>
                 The Faculty Recruitment Portal has significantly improved the efficiency
-                and transparency of IIIT Lucknow's hiring process. The digital system
+                and transparency of IIIT Lucknow&apos;s hiring process. The digital system
                 reduced application processing time by 60% and eliminated paper-based
                 workflows entirely.
               </ProjectSectionText>

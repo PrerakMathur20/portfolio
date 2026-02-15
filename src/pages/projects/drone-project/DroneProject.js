@@ -1,11 +1,9 @@
 import { Footer } from 'components/Footer';
-import { Image } from 'components/Image';
 import { Meta } from 'components/Meta';
 import {
   ProjectBackground,
   ProjectContainer,
   ProjectHeader,
-  ProjectImage,
   ProjectSection,
   ProjectSectionColumns,
   ProjectSectionContent,
@@ -14,7 +12,6 @@ import {
   ProjectTextRow,
 } from 'layouts/Project';
 import { Fragment } from 'react';
-import { media } from 'utils/style';
 import styles from './DroneProject.module.css';
 
 // Placeholder imports - replace these with your actual project screenshots
@@ -73,7 +70,7 @@ export const DroneProject = () => {
             <ProjectTextRow>
               <ProjectSectionHeading>Government Partnership</ProjectSectionHeading>
               <ProjectSectionText>
-                This project was funded by the Government of India's Ministry of Science
+                This project was funded by the Government of India&apos;s Ministry of Science
                 and Technology as part of their initiative to promote indigenous
                 agricultural technology development. Working with a multidisciplinary team
                 of engineers, agronomists, and data scientists, we created a solution that

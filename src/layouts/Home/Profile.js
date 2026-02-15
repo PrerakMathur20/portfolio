@@ -7,7 +7,6 @@ import { DecoderText } from 'components/DecoderText';
 import { Divider } from 'components/Divider';
 import { Heading } from 'components/Heading';
 import { Image } from 'components/Image';
-import { Link } from 'components/Link';
 import { Section } from 'components/Section';
 import { Text } from 'components/Text';
 import { Transition } from 'components/Transition';
@@ -21,14 +20,14 @@ const ProfileText = ({ visible, titleId }) => (
       <DecoderText text="Hi there" start={visible} delay={500} />
     </Heading>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
-      I'm Prerak, a software developer who loves building things that make a difference. 
-      Whether it's creating tools for farmers, building music platforms, or setting up 
-      self-hosted solutions, I'm always tinkering with something new. I believe great 
+      I&apos;m Prerak, a software developer who loves building things that make a difference. 
+      Whether it&apos;s creating tools for farmers, building music platforms, or setting up 
+      self-hosted solutions, I&apos;m always tinkering with something new. I believe great 
       software comes from understanding real problems and crafting thoughtful solutions.
     </Text>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
-      When I'm not coding, you'll find me exploring new tech, contributing to open source 
-      projects, or diving into competitive programming challenges. I'm a big believer in 
+      When I&apos;m not coding, you&apos;ll find me exploring new tech, contributing to open source 
+      projects, or diving into competitive programming challenges. I&apos;m a big believer in 
       learning by doing and sharing what I learn along the way. If you want to chat about 
       tech, collaborate on a project, or just say hi, feel free to reach out!
     </Text>

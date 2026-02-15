@@ -1,11 +1,9 @@
 import { Footer } from 'components/Footer';
-import { Image } from 'components/Image';
 import { Meta } from 'components/Meta';
 import {
   ProjectBackground,
   ProjectContainer,
   ProjectHeader,
-  ProjectImage,
   ProjectSection,
   ProjectSectionColumns,
   ProjectSectionContent,
@@ -14,7 +12,6 @@ import {
   ProjectTextRow,
 } from 'layouts/Project';
 import { Fragment } from 'react';
-import { media } from 'utils/style';
 import styles from './CloudStorage.module.css';
 
 // Placeholder imports - replace these with your actual project screenshots

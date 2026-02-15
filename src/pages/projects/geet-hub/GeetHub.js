@@ -1,12 +1,9 @@
 import { Footer } from 'components/Footer';
-import { Image } from 'components/Image';
-import { Link } from 'components/Link';
 import { Meta } from 'components/Meta';
 import {
   ProjectBackground,
   ProjectContainer,
   ProjectHeader,
-  ProjectImage,
   ProjectSection,
   ProjectSectionColumns,
   ProjectSectionContent,
@@ -15,7 +12,6 @@ import {
   ProjectTextRow,
 } from 'layouts/Project';
 import { Fragment } from 'react';
-import { media } from 'utils/style';
 import styles from './GeetHub.module.css';
 
 // Placeholder imports - replace these with your actual project screenshots
@@ -111,9 +107,9 @@ export const GeetHub = () => {
             <ProjectTextRow>
               <ProjectSectionHeading>Collaborative Platform</ProjectSectionHeading>
               <ProjectSectionText>
-                One of Geet-Hub's unique features is its emphasis on collaboration and
+                One of Geet-Hub&apos;s unique features is its emphasis on collaboration and
                 community. Musicians can work together on projects, share their work, and
-                learn from each other's creative processes.
+                learn from each other&apos;s creative processes.
               </ProjectSectionText>
             </ProjectTextRow>
             <ProjectSectionColumns>
@@ -286,7 +282,7 @@ export const GeetHub = () => {
                 <ProjectSectionHeading level={4}>Developer Resources</ProjectSectionHeading>
                 <ProjectSectionText>
                   Comprehensive API documentation, starter guides, and example plugins help
-                  developers extend Geet-Hub's functionality. The modular architecture
+                  developers extend Geet-Hub&apos;s functionality. The modular architecture
                   makes it easy to add custom effects, file format support, and integration
                   with external services.
                 </ProjectSectionText>
@@ -321,7 +317,7 @@ export const GeetHub = () => {
                 <ProjectSectionText>
                   To handle large audio files efficiently, we implemented chunked file
                   upload with resume capability, progressive loading of waveforms, and
-                  streaming playback that doesn't require loading the entire file into
+                  streaming playback that doesn&apos;t require loading the entire file into
                   memory.
                 </ProjectSectionText>
               </div>
@@ -355,7 +351,7 @@ export const GeetHub = () => {
                 <ProjectSectionHeading level={4}>Community Growth</ProjectSectionHeading>
                 <ProjectSectionText>
                   Building a thriving community of music creators who can learn from each
-                  other, collaborate on projects, and push the boundaries of what's possible
+                  other, collaborate on projects, and push the boundaries of what&apos;s possible
                   with open-source music technology. Educational resources including
                   tutorials, workshops, and mentorship programs are planned to lower the
                   barrier to entry for new musicians.

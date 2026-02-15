@@ -61,7 +61,7 @@ export const Uses = () => {
                   <ListItem>
                     I use <Link href="https://kafka.apache.org/">Apache Kafka</Link> for
                     building event-driven architectures and real-time data streaming
-                    solutions. I've even developed a reusable Kafka utility library.
+                    solutions. I&apos;ve even developed a reusable Kafka utility library.
                   </ListItem>
                 </List>
               </ProjectSectionText>
@@ -93,7 +93,7 @@ export const Uses = () => {
                   <ListItem>
                     I use <Link href="https://cloud.google.com/">Google Cloud Platform</Link>{' '}
                     for deploying scalable applications and managing cloud infrastructure.
-                    I've worked extensively with GCP services during my internship projects.
+                    I&apos;ve worked extensively with GCP services during my internship projects.
                   </ListItem>
                   <ListItem>
                     <Link href="https://www.cloudflare.com/">Cloudflare</Link> Argo Tunnels
@@ -103,7 +103,7 @@ export const Uses = () => {
                   <ListItem>
                     For version control and collaboration, I use{' '}
                     <Link href="https://git-scm.com/">Git</Link> and{' '}
-                    <Link href="https://github.com/">GitHub</Link>. I'm an active open
+                    <Link href="https://github.com/">GitHub</Link>. I&apos;m an active open
                     source contributor with projects like InternetArchive and CircuitVerse.
                   </ListItem>
                 </List>

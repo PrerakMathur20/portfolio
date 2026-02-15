@@ -2,29 +2,6 @@ const path = require('path');
 const fs = require('fs');
 const { createHash } = require('crypto');
 
-// Simulating html2canvas behavior
-function simulateHtml2Canvas(document) {
-  return new Promise(resolve => {
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d');
-    const body = document.body;
-
-    // Simulate rendering
-    const render = () => {
-      ctx.drawImage(body, 0, 0);
-      resolve(canvas);
-    };
-
-    // Simulate image loading
-    const img = new Image();
-    img.onload = render;
-    img.src = 'data:image/svg+xml;base64,' + btoa(new XMLSerializer().serializeToString(body));
-
-    // Trigger render after a short delay
-    setTimeout(render, 500);
-  });
-}
-
 export async function generateOgImage(props) {
   const params = new URLSearchParams(props);
   const url = `file:${path.join(
@@ -42,21 +19,10 @@ export async function generateOgImage(props) {
     fs.statSync(imagePath);
     return publicPath;
   } catch (error) {
-    // File does not exist, so we create it
+    // File does not exist, but we can't generate it without Puppeteer
+    // Return null to use default meta tags
+    return null;
   }
-
-  // Simulate JSDOM behavior
-  const document = {
-    body: fs.readFileSync(url.replace('file:', ''), 'utf-8'),
-  };
-
-  const canvas = await simulateHtml2Canvas(document);
-  const buffer = canvas.toBuffer();
-
-  fs.mkdirSync(ogImageDir, { recursive: true });
-  fs.writeFileSync(imagePath, buffer);
-
-  return publicPath;
 }
 
 
