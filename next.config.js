@@ -2,6 +2,9 @@ module.exports = {
   reactStrictMode: true,
   trailingSlash: true,
   pageExtensions: ['page.js', 'api.js'],
+  images: {
+    unoptimized: true,
+  },
   webpack(config, { isServer }) {
     // Run custom scripts
     if (isServer) {
@@ -33,6 +36,7 @@ module.exports = {
       test: /\.glsl$/,
       type: 'asset/source',
     });
+    
 
     return config;
   },

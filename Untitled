@@ -1,9 +1,0 @@
-12:22:04.914	Success: Finished initializing build environment
-12:22:05.191	Cloning repository...
-12:22:07.083	Restoring from dependencies cache
-12:22:07.085	Restoring from build output cache
-12:22:07.834	Detected the following tools from environment: nodejs@18.0.0, npm@10.9.2
-12:22:07.834	Installing nodejs 18.0.0
-12:22:11.784	Installing project dependencies: npm clean-install --progress=false
-12:22:15.506	npm ERR! `npm ci` can only install packages when your package.json and package-lock.json or npm-shrinkwrap.json are in sync. Please update your lock file with `npm install` before continuing.
-12:22:15.506	npm ERR! 
