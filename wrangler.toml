@@ -1,12 +1,5 @@
 name = "portfolio"
-main = "src/index.js"
 compatibility_date = "2026-02-15"
+pages_build_output_dir = "build"
 
-# Static assets configuration
-[assets]
-directory = "./build"
-
-# Environment variables
-[vars]
-NEXT_PUBLIC_WEBSITE_URL = "https://prerak.tech"
-NEXT_PUBLIC_API_URL = "https://api.prerak.tech"
+# No main worker file needed for Cloudflare Pages

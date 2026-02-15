@@ -52,9 +52,9 @@
     "deploy": "aws s3 sync --delete build/ s3://hamish-portfolio-site",
     "deploy:storybook": "aws s3 sync --delete build-storybook s3://hamish-portfolio-storybook",
     "deploy:functions": "cd functions && npm run deploy",
-    "deploy:cf": "wrangler deploy",
-    "deploy:cf:prod": "npm run build && wrangler deploy",
-    "deploy:cf:preview": "npm run build && wrangler deploy --env preview",
+    "deploy:cf": "wrangler pages deploy build --project-name=portfolio",
+    "deploy:cf:prod": "npm run build && wrangler pages deploy build --project-name=portfolio",
+    "deploy:cf:preview": "npm run build && wrangler pages deploy build --project-name=portfolio --branch=preview",
     "start": "next start",
     "test": "echo 'write some tests'",
     "storybook": "start-storybook -p 9009 -h localhost"
