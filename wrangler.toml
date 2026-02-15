@@ -1,5 +1,0 @@
-name = "portfolio"
-compatibility_date = "2026-02-15"
-pages_build_output_dir = "build"
-
-# No main worker file needed for Cloudflare Pages
