@@ -1,0 +1,65 @@
+---
+title: 'Building a Returns Order Lifecycle Dashboard with Node.js and GraphQL'
+abstract: 'Creating a real-time dashboard to track returns across their entire lifecycle, using modern technologies like Node.js, React, and GraphQL to increase visibility and standardize tracking for associates.'
+date: '2024-06-15'
+banner: /static/returns-dashboard-banner.jpg
+---
+
+## The Returns Visibility Problem
+
+In e-commerce, returns are inevitable. But at scale, managing returns becomes incredibly complex. When I joined the returns team at Walmart Global Tech, associates were juggling multiple systems to track a single return through its lifecycle. We needed a unified dashboard that brought together data from multiple sources into a single, real-time view.
+
+## Architecture Decisions
+
+### GraphQL as the Data Layer
+
+I chose GraphQL for several reasons:
+
+**1. Data Aggregation**
+
+GraphQL's ability to stitch together data from multiple sources was perfect for our use case. A single query could fetch order details, return status, shipping info, and refund status.
+
+**2. Frontend Flexibility**
+
+With GraphQL, the frontend team could iterate quickly without backend changes. Need a new field? Just add it to the query.
+
+**3. Performance Through Batching**
+
+Using DataLoader, we batched and cached database calls, reducing load on downstream services by 70%.
+
+### Tech Stack
+
+- **Backend**: Node.js with Apollo Server
+- **Frontend**: React with Apollo Client
+- **Data Sources**: REST APIs wrapped as GraphQL data sources
+- **Real-time Updates**: GraphQL Subscriptions over WebSockets
+- **Caching**: Redis for response caching
+
+## Building the Timeline View
+
+The timeline view was the most challenging and most valuable feature. Associates needed to see the complete journey of a return at a glance.
+
+### Real-Time Updates with Subscriptions
+
+The game-changer was adding real-time updates. When a return's status changed, all viewing associates saw the update instantly using GraphQL subscriptions.
+
+## Impact Metrics
+
+The dashboard's impact was measurable and immediate:
+
+- **60% reduction** in average handle time per return
+- **Increased visibility** - all stakeholders could track returns in real-time
+- **30% faster** refund processing
+- **Adopted by 200+ associates** across customer service teams
+- **Standardized tracking** led to better reporting and analytics
+
+## Developer Experience
+
+Building with GraphQL made the entire development process smoother:
+
+- **Strong typing** caught bugs at compile time
+- **GraphQL Playground** made API exploration easy
+- **Automated documentation** from schema reduced onboarding time
+- **Code generation** from schema to TypeScript types eliminated boilerplate
+
+This project reinforced my belief that the best internal tools are ones that get out of the way and let people do their jobs effectively. By focusing on real-time data, standardization, and excellent performance, we built something that associates actually wanted to use every day.

@@ -1,0 +1,84 @@
+---
+title: 'Building an Open-Source Quad-Copter for Agricultural Data Analysis'
+abstract: 'Leading a government-funded project to develop an affordable, open-source drone equipped with machine learning for agricultural data collection and crop analysis.'
+date: '2023-03-15'
+banner: /static/drone-ml-banner.jpg
+---
+
+## The Agricultural Technology Gap
+
+In 2022, I joined a government-funded project at IIIT-L with an ambitious goal: democratize agricultural technology for Indian farmers. The problem was clear - commercial agricultural drones cost ₹5-10 lakhs ($6,000-$12,000), putting them out of reach for small and medium-sized farms.
+
+Our mission: build an affordable, open-source quad-copter with machine learning capabilities that could:
+- Capture high-resolution aerial imagery
+- Analyze crop health in real-time
+- Detect pest infestations and diseases early
+- Generate actionable insights for farmers
+
+All for under ₹50,000 ($600).
+
+## The Multidisciplinary Challenge
+
+This wasn't just a software project - it required expertise in hardware design, embedded systems, computer vision, and machine learning. I led a team of 12 students across these disciplines. My role spanned project management, ML implementation, and systems integration.
+
+## Hardware Design Philosophy
+
+### Open-Source First
+
+We designed every component to be:
+- 3D-printable or locally sourceable
+- Modifiable for different use cases
+- Well-documented for replication
+
+## Machine Learning Pipeline
+
+### Dataset Building
+
+We collected over 50,000 images across 3 crop types (wheat, rice, mustard) and 4 health states:
+- Healthy
+- Water-stressed
+- Nutrient-deficient
+- Disease/pest-affected
+
+Each image was manually labeled by agricultural experts from IIIT-L's partner organizations.
+
+### Model Architecture
+
+For on-device inference, we needed a lightweight model. I chose MobileNetV2 as the base, achieving:
+- **Validation Accuracy**: 87.3%
+- **Model Size**: 9.2 MB (quantized to 2.4 MB for edge deployment)
+- **Inference Time**: 180ms on Raspberry Pi 4
+
+## Field Testing Results
+
+We conducted trials on 5 farms across Uttar Pradesh with overwhelmingly positive results. Early detection of water stress, nutrient deficiency, and pest infestations saved estimated 20-30% yield loss.
+
+## Open-Source Impact
+
+We released everything on GitHub under MIT license:
+- Hardware design files (STL, CAD)
+- Flight control firmware
+- ML training code and datasets
+- Web application source
+
+The project has since been:
+- **Replicated by 15+ universities** for research
+- **Used by 3 agricultural startups** as foundation for commercial products
+- **Featured in agricultural technology conferences**
+- **Downloaded 2,000+ times**
+
+## Lessons Learned
+
+### 1. Talk to Your Users Early
+
+We almost built the wrong thing. Early farmer interviews revealed they cared more about *actionable insights* than raw data.
+
+### 2. Reliability > Features
+
+A drone that works 95% of the time isn't good enough. We spent months on failure recovery and error handling.
+
+### 3. Documentation is Critical
+
+For open-source hardware, clear documentation is the difference between "interesting project" and "replicated impact."
+
+This project reinforced my belief that technology should be accessible to everyone, not just those who can afford expensive commercial solutions. Open-source hardware and machine learning have the potential to transform agriculture in developing countries.

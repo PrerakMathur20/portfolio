@@ -1,0 +1,80 @@
+---
+title: 'Building Strict Authorization for Internal APIs with Spring Boot'
+abstract: 'Architecting a Spring Boot-based auth service that enforces fine-grained authorization for sensitive internal APIs, balancing security and developer experience.'
+date: '2023-10-05'
+banner: /static/auth-service-banner.jpg
+---
+
+## The Authorization Gap
+
+Walmart's internal APIs handled sensitive data - customer information, pricing details, inventory levels. While we had authentication in place (knowing *who* you are), authorization (knowing *what you can do*) was inconsistent. Different APIs implemented their own permission checks, leading to security vulnerabilities and duplicated authorization logic.
+
+I was tasked with building a centralized auth service that would standardize authorization across all internal APIs.
+
+## Design Principles
+
+Before writing code, I established core principles:
+
+### 1. Security by Default
+
+Services should deny access unless explicitly granted. No "open by default" APIs.
+
+### 2. Fine-Grained Permissions
+
+Move beyond simple role-based access (RBAC) to support attribute-based access control (ABAC) for complex scenarios.
+
+### 3. Developer-Friendly
+
+Authorization checks should be simple to implement - a single annotation should do the trick.
+
+### 4. Performance First
+
+Authorization checks happen on every API call. Latency here hurts everywhere.
+
+## Spring Boot Implementation
+
+### The Authorization Annotation
+
+Making it developer-friendly meant creating a simple annotation that developers could use to protect their endpoints with minimal code.
+
+### The Authorization Engine
+
+The core authorization logic evaluates permissions against a hierarchical permission model that supports wildcards and conditions.
+
+## Performance Optimization
+
+Authorization checks on every API call demanded aggressive optimization:
+
+### Multi-Layer Caching
+
+- **L1**: Caffeine in-memory cache (5-minute TTL)
+- **L2**: Redis distributed cache (15-minute TTL)
+- **L3**: Database
+
+This resulted in **sub-5ms latency** for 99% of authorization checks.
+
+## Real-World Impact
+
+The auth service became critical infrastructure:
+
+- **Adopted by 50+ internal services** within 6 months
+- **Sub-5ms latency** for 99% of authorization checks
+- **Zero security incidents** related to authorization in production
+- **Centralized audit trail** for compliance reporting
+- **90% cache hit rate** reducing database load
+
+## Security Considerations
+
+### Least Privilege by Default
+
+New users and services get zero permissions. They must explicitly request what they need.
+
+### Time-Bound Permissions
+
+Permissions can have expiration dates for temporary access.
+
+### Defense in Depth
+
+The auth service is one layer. We also enforced network-level isolation, mutual TLS between services, and rate limiting per principal.
+
+Building this auth service taught me that security and developer experience aren't opposing goals - with thoughtful design, you can have both. The key is making the secure path the easy path.

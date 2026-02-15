@@ -1,0 +1,77 @@
+---
+title: 'Building a Drag-and-Drop SQL Analytics Dashboard for Customer Support'
+abstract: 'A deep dive into creating an interactive, low-code SQL dashboard that empowered non-technical teams to run complex queries and generate insights in real-time.'
+date: '2024-11-20'
+banner: /static/sql-dashboard-banner.jpg
+featured: true
+---
+
+## The Problem Statement
+
+Customer support teams at Walmart were drowning in data but starving for insights. They needed to run complex SQL queries to troubleshoot customer issues, but were dependent on engineering teams to write and execute these queries. The turnaround time? Often 24-48 hours for simple data pulls.
+
+I set out to change that by building a drag-and-drop SQL analytics dashboard that would democratize data access while maintaining security and performance.
+
+## Technology Stack
+
+- **Frontend**: React with React DnD for drag-and-drop interactions
+- **Backend**: Node.js with Express
+- **Database**: PostgreSQL with read replicas
+- **Query Engine**: Custom SQL query builder with security layers
+- **Deployment**: Docker containers on internal Kubernetes cluster
+
+## Key Features
+
+### 1. Visual Query Builder
+
+The heart of the dashboard is its visual query builder. Users can:
+
+- Drag tables onto a canvas
+- Define joins visually
+- Select columns with checkboxes
+- Add filters using form inputs
+- Preview generated SQL before execution
+
+Behind the scenes, I built a query builder that translates these visual interactions into safe, optimized SQL.
+
+### 2. Security First
+
+Giving SQL access to non-engineers requires robust security:
+
+- **Read-only connections** to prevent accidental data modification
+- **Query allowlisting** - only approved table patterns are accessible
+- **Rate limiting** per user to prevent resource exhaustion
+- **Query timeout** - all queries automatically timeout after 30 seconds
+- **Audit logging** - every query is logged with user context
+
+### 3. Real-Time Performance
+
+Nobody wants to wait for data. The dashboard includes:
+
+- **Query result caching** with Redis (30-minute TTL)
+- **Streaming results** for large datasets using chunked responses
+- **Query explain plans** to help users optimize slow queries
+- **Materialized views** for common aggregate queries
+
+## Impact and Adoption
+
+The dashboard transformed how customer support teams worked:
+
+- **90% reduction** in data request tickets to engineering
+- **Real-time insights** instead of 24-48 hour wait times
+- **50+ daily active users** across 3 support teams
+- **500+ queries** executed daily on average
+
+One support lead told me: *"This tool gave us superpowers. We can now debug customer issues in minutes instead of days."*
+
+## Lessons Learned
+
+1. **Start with constraints** - Limiting initial scope to read-only queries made the project manageable and security easier to reason about.
+
+2. **Progressive disclosure** - Advanced features (custom SQL, explain plans) are hidden by default but discoverable for power users.
+
+3. **Invest in onboarding** - Created interactive tutorials and sample queries that taught users the tool while solving real problems.
+
+4. **Monitor everything** - Query analytics helped us optimize common patterns and identify struggling users who needed help.
+
+Building tools that empower non-technical users is incredibly rewarding. This dashboard proved that with thoughtful design and robust engineering, we can democratize data access without compromising security or performance.

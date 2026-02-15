@@ -146,6 +146,7 @@ export const Articles = ({ posts, featured }) => {
   const singleColumnWidth = 1190;
   const isSingleColumn = width <= singleColumnWidth;
 
+
   const postsHeader = (
     <header className={styles.header}>
       <Heading className={styles.heading} level={5} as="h1">
@@ -164,13 +165,12 @@ export const Articles = ({ posts, featured }) => {
       {Array(2)
         .fill()
         .map((skeleton, index) => (
-          <SkeletonPost key={index} />
+          <SkeletonPost key={index} index={index} />
         ))}
     </div>
   );
 
   const featuredPost = <ArticlesPost {...featured} />;
-
   return (
     <article className={styles.articles}>
       <Meta

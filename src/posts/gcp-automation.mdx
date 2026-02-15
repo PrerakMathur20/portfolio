@@ -1,0 +1,113 @@
+---
+title: 'Automating Bulk Data Re-ingestion on GCP: A Production Story'
+abstract: 'How we built an automated workflow to handle bulk data re-ingestion and verification on Google Cloud Platform, achieving near real-time scalability and 99.9% validation accuracy.'
+date: '2023-12-10'
+banner: /static/gcp-automation-banner.jpg
+---
+
+## The Data Quality Crisis
+
+Picture this: your company processes millions of customer records daily, and one day you discover a bug in your ingestion pipeline that corrupted data for the past week. Now you need to re-ingest and verify millions of records without impacting production traffic. That's exactly the situation we faced at Walmart Global Tech.
+
+The manual process was a nightmare:
+- Engineers manually triggering batch jobs
+- No visibility into progress
+- Failed records required manual intervention
+- Verification was a separate, manual process
+- The entire operation could take **days**
+
+We needed automation, and we needed it fast.
+
+## Architecture Overview
+
+I designed a serverless architecture on GCP that could handle massive scale while remaining cost-effective:
+
+```
+Cloud Storage → Cloud Functions → Pub/Sub → Dataflow → BigQuery
+```
+
+### Key Components
+
+**1. Cloud Storage as the Source of Truth**
+
+Raw data files (JSON, CSV, Parquet) are uploaded to Cloud Storage buckets, which trigger the ingestion pipeline automatically.
+
+**2. Cloud Functions for Orchestration**
+
+A set of lightweight Cloud Functions handle:
+- File validation and preprocessing
+- Splitting large files into manageable chunks
+- Publishing messages to Pub/Sub for parallel processing
+- Coordinating the verification phase
+
+**3. Pub/Sub for Reliable Messaging**
+
+Using Pub/Sub topics and subscriptions gave us:
+- At-least-once delivery guarantees
+- Automatic retry with exponential backoff
+- Dead letter queues for failed messages
+- Ability to replay messages if needed
+
+**4. Dataflow for Scalable Processing**
+
+Apache Beam running on Dataflow handled the heavy lifting of processing millions of records in parallel.
+
+## Solving the Verification Challenge
+
+Re-ingesting data is one thing; verifying it's correct is another. I implemented a two-phase verification strategy:
+
+### Phase 1: Real-Time Validation
+
+During ingestion, each record goes through:
+- Schema validation
+- Business rule checks
+- Referential integrity verification
+- Duplicate detection
+
+Records that fail validation are automatically routed to a dead letter queue with detailed error messages.
+
+### Phase 2: Post-Ingestion Reconciliation
+
+After ingestion completes, an automated reconciliation job:
+1. Compares record counts between source and destination
+2. Runs checksum validation on a sample of records
+3. Executes business-critical queries to verify data integrity
+4. Generates a comprehensive validation report
+
+The validation accuracy hit **99.9%**, catching issues that would have otherwise slipped into production.
+
+## Scaling Near Real-Time
+
+The beauty of this architecture is its elasticity. During a re-ingestion operation:
+
+- Dataflow automatically scales from 1 to 100+ workers
+- Pub/Sub handles millions of messages per second
+- Cloud Functions scale independently based on load
+- BigQuery absorbs writes without breaking a sweat
+
+We achieved **near real-time** processing - a 5GB dataset that previously took 6 hours to re-ingest now completes in **under 30 minutes**.
+
+## Real-World Impact
+
+The automated workflow transformed our data operations:
+
+- **95% reduction** in manual intervention
+- Re-ingestion operations that took **days now complete in hours**
+- **Zero data loss** during re-ingestion operations
+- Engineering team freed up to focus on feature development instead of data babysitting
+
+## Lessons Learned
+
+### 1. Design for Failure
+
+In distributed systems, failures are inevitable. The workflow includes retry logic, circuit breakers, and graceful degradation at every layer.
+
+### 2. Idempotency is Critical
+
+Every operation is designed to be idempotent - re-running the same ingestion produces the same result. This made debugging and recovery much simpler.
+
+### 3. Observability from Day One
+
+Building in comprehensive logging and monitoring from the start saved countless debugging hours later.
+
+Building this automation workflow taught me that the best systems are ones users forget exist - they just work, reliably and at scale. That's the promise of cloud-native architecture done right.
