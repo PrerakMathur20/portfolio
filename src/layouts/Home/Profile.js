@@ -20,16 +20,16 @@ const ProfileText = ({ visible, titleId }) => (
       <DecoderText text="Hi there" start={visible} delay={500} />
     </Heading>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
-      I&apos;m Prerak, a software developer who loves building things that make a difference. 
-      Whether it&apos;s creating tools for farmers, building music platforms, or setting up 
-      self-hosted solutions, I&apos;m always tinkering with something new. I believe great 
-      software comes from understanding real problems and crafting thoughtful solutions.
+      I&apos;m Prerak, a Frontend Engineer at Walmart Global Tech with 2+ years building
+      production UI systems. I specialize in React, TypeScript, and Next.js — from internal
+      analytics dashboards to open-source component libraries. I care deeply about
+      component architecture, accessibility, and performance.
     </Text>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
-      When I&apos;m not coding, you&apos;ll find me exploring new tech, contributing to open source 
-      projects, or diving into competitive programming challenges. I&apos;m a big believer in 
-      learning by doing and sharing what I learn along the way. If you want to chat about 
-      tech, collaborate on a project, or just say hi, feel free to reach out!
+      Outside of work I maintain Tokis, an open-source React UI library with 500+ weekly
+      downloads, and contribute to projects like Internet Archive and CircuitVerse. I&apos;m
+      also a Codeforces Specialist and Google Summer of Code 2022 contributor. Always happy
+      to chat about frontend craft, open source, or competitive programming!
     </Text>
   </Fragment>
 );

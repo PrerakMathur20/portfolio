@@ -33,35 +33,45 @@ export const Uses = () => {
         />
         <ProjectHeader
           title="Uses"
-          description="A comprehensive list of tools, frameworks, languages, and technologies I use on a daily basis to build scalable software solutions."
+          description="A list of tools, languages, and technologies I use daily to build performant, accessible UI systems and full-stack applications."
         />
         <ProjectSection padding="none" className={styles.section}>
           <ProjectSectionContent>
             <ProjectTextRow width="m">
-              <ProjectSectionHeading>Languages & Frameworks</ProjectSectionHeading>
+              <ProjectSectionHeading>Frontend Stack</ProjectSectionHeading>
               <ProjectSectionText as="div">
                 <List>
                   <ListItem>
-                    <Link href="https://nodejs.org/">Node.js</Link> is my go-to runtime for
-                    building scalable backend services and APIs. I use it extensively at
-                    Walmart Global Tech for microservices architecture.
-                  </ListItem>
-                  <ListItem>
-                    For Java development, I work with{' '}
-                    <Link href="https://spring.io/projects/spring-boot">Spring Boot</Link>{' '}
-                    to build robust enterprise applications with strict authorization and
-                    access governance.
-                  </ListItem>
-                  <ListItem>
                     <Link href="https://reactjs.org/">React</Link> and{' '}
-                    <Link href="https://nextjs.org/">Next.js</Link> are my primary choices
-                    for building modern, performant web applications with great SEO and user
-                    experience.
+                    <Link href="https://www.typescriptlang.org/">TypeScript</Link> are my
+                    primary tools for building production UI systems — from internal
+                    dashboards at Walmart to open-source component libraries.
                   </ListItem>
                   <ListItem>
-                    I use <Link href="https://kafka.apache.org/">Apache Kafka</Link> for
-                    building event-driven architectures and real-time data streaming
-                    solutions. I&apos;ve even developed a reusable Kafka utility library.
+                    <Link href="https://nextjs.org/">Next.js</Link> is my framework of
+                    choice for SSR/SSG applications. I use it for this portfolio and for
+                    SEO-optimized web apps at{' '}
+                    <Link href="https://zeko.io/">Zeko</Link>.
+                  </ListItem>
+                  <ListItem>
+                    I use <Link href="https://redux.js.org/">Redux</Link> and{' '}
+                    <Link href="https://axios-http.com/">Axios</Link> for state management
+                    and data-fetching patterns in large-scale React applications.
+                  </ListItem>
+                  <ListItem>
+                    <Link href="https://graphql.org/">GraphQL</Link> powers the API layer
+                    for my dashboards at Walmart — providing type-safe, efficient data
+                    fetching and reducing over-fetching.
+                  </ListItem>
+                  <ListItem>
+                    For component documentation and design systems, I use{' '}
+                    <Link href="https://storybook.js.org/">Storybook</Link> — including for
+                    the Tokis component library.
+                  </ListItem>
+                  <ListItem>
+                    I follow <Link href="https://www.w3.org/WAI/ARIA/apg/">WAI-ARIA</Link>{' '}
+                    guidelines and <Link href="https://www.w3.org/TR/WCAG21/">WCAG</Link>{' '}
+                    standards to ensure my components are accessible to all users.
                   </ListItem>
                 </List>
               </ProjectSectionText>
@@ -77,34 +87,35 @@ export const Uses = () => {
                   <ListItem>
                     I use{' '}
                     <Link href="https://code.visualstudio.com/">Visual Studio Code</Link>{' '}
-                    as my primary code editor for most development work, with Cursor for
-                    AI-assisted coding.
+                    as my primary editor, with Cursor for AI-assisted development and
+                    refactoring.
                   </ListItem>
                   <ListItem>
-                    <Link href="https://www.docker.com/">Docker</Link> is essential for
-                    containerizing applications and ensuring consistent environments across
-                    development and production.
+                    <Link href="https://vitejs.dev/">Vite</Link> and{' '}
+                    <Link href="https://webpack.js.org/">Webpack</Link> for bundling — Vite
+                    for new projects and libraries (Tokis), Webpack for the enterprise apps.
                   </ListItem>
                   <ListItem>
-                    For API development and testing, I work with{' '}
-                    <Link href="https://graphql.org/">GraphQL</Link> to build efficient,
-                    type-safe APIs that reduce over-fetching and improve performance.
+                    <Link href="https://jestjs.io/">Jest</Link> and{' '}
+                    <Link href="https://testing-library.com/">Testing Library</Link> for
+                    unit and integration tests on React components.
                   </ListItem>
                   <ListItem>
-                    I use <Link href="https://cloud.google.com/">Google Cloud Platform</Link>{' '}
-                    for deploying scalable applications and managing cloud infrastructure.
-                    I&apos;ve worked extensively with GCP services during my internship projects.
+                    <Link href="https://www.docker.com/">Docker</Link> for containerizing
+                    applications and ensuring consistent environments across dev and
+                    production.
                   </ListItem>
                   <ListItem>
-                    <Link href="https://www.cloudflare.com/">Cloudflare</Link> Argo Tunnels
-                    are my choice for secure remote connectivity without exposing network
-                    ports, especially for self-hosted solutions.
+                    <Link href="https://www.cloudflare.com/">Cloudflare</Link> for DNS,
+                    Tunnels, and CDN — zero-trust architecture with no exposed network ports
+                    on self-hosted projects.
                   </ListItem>
                   <ListItem>
-                    For version control and collaboration, I use{' '}
+                    For version control I use{' '}
                     <Link href="https://git-scm.com/">Git</Link> and{' '}
-                    <Link href="https://github.com/">GitHub</Link>. I&apos;m an active open
-                    source contributor with projects like InternetArchive and CircuitVerse.
+                    <Link href="https://github.com/">GitHub</Link>. Active open source
+                    contributor — Internet Archive, Appwrite, CircuitVerse, and my own
+                    projects.
                   </ListItem>
                 </List>
               </ProjectSectionText>
@@ -114,40 +125,40 @@ export const Uses = () => {
         <ProjectSection padding="none" className={styles.section}>
           <ProjectSectionContent>
             <ProjectTextRow stretch width="m">
-              <ProjectSectionHeading>Databases & Cloud</ProjectSectionHeading>
+              <ProjectSectionHeading>Full Stack & Infra</ProjectSectionHeading>
               <Table>
                 <TableBody>
                   <TableRow>
-                    <TableHeadCell>Relational DB</TableHeadCell>
-                    <TableCell>PostgreSQL, MySQL</TableCell>
+                    <TableHeadCell>Languages</TableHeadCell>
+                    <TableCell>TypeScript, JavaScript, Java</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableHeadCell>Query Language</TableHeadCell>
-                    <TableCell>SQL, GraphQL</TableCell>
+                    <TableHeadCell>Backend</TableHeadCell>
+                    <TableCell>Node.js, Spring Boot</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableHeadCell>Databases</TableHeadCell>
+                    <TableCell>PostgreSQL, Redis, Cassandra</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableHeadCell>Message Queue</TableHeadCell>
                     <TableCell>Apache Kafka</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableHeadCell>Cloud Platform</TableHeadCell>
-                    <TableCell>Google Cloud Platform (GCP)</TableCell>
+                    <TableHeadCell>Cloud</TableHeadCell>
+                    <TableCell>GCP, AWS, Kubernetes</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableHeadCell>CI/CD</TableHeadCell>
+                    <TableCell>GitHub Actions, CI/CD pipelines</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableHeadCell>Containerization</TableHeadCell>
                     <TableCell>Docker</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableHeadCell>API Design</TableHeadCell>
-                    <TableCell>REST, GraphQL</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableHeadCell>Version Control</TableHeadCell>
-                    <TableCell>Git, GitHub</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableHeadCell>Streaming</TableHeadCell>
-                    <TableCell>Plex, Cloudflare Argo Tunnels</TableCell>
+                    <TableHeadCell>Monitoring</TableHeadCell>
+                    <TableCell>Grafana</TableCell>
                   </TableRow>
                 </TableBody>
               </Table>

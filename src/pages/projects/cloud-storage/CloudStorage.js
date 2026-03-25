@@ -14,10 +14,9 @@ import {
 import { Fragment } from 'react';
 import styles from './CloudStorage.module.css';
 
-// Placeholder imports - replace these with your actual project screenshots
-import cloudBackgroundPlaceholder from 'assets/slice-background-placeholder.jpg';
-import cloudBackground from 'assets/slice-background.jpg';
-import cloudBackgroundLarge from 'assets/slice-background-large.jpg';
+import cloudBackgroundPlaceholder from 'assets/spr-background-placeholder.jpg';
+import cloudBackground from 'assets/spr-background.jpg';
+import cloudBackgroundLarge from 'assets/spr-background-large.jpg';
 
 const title = 'Self-Hosted Cloud Streaming & Storage';
 const description =

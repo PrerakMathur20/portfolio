@@ -14,10 +14,9 @@ import {
 import { Fragment } from 'react';
 import styles from './DroneProject.module.css';
 
-// Placeholder imports - replace these with your actual project screenshots
-import droneBackgroundPlaceholder from 'assets/slice-background-placeholder.jpg';
-import droneBackground from 'assets/slice-background.jpg';
-import droneBackgroundLarge from 'assets/slice-background-large.jpg';
+import droneBackgroundPlaceholder from 'assets/drone-banner-placeholder.jpg';
+import droneBackground from 'assets/drone-banner.jpg';
+import droneBackgroundLarge from 'assets/drone-banner.jpg';
 
 const title = 'Drone Development & Data Classification';
 const description =

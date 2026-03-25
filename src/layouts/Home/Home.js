@@ -4,12 +4,19 @@ import gamestackTexture2 from 'assets/gamestack-list.jpg';
 import gamestackTextureLarge from 'assets/gamestack-login-large.jpg';
 import gamestackTexturePlaceholder from 'assets/gamestack-login-placeholder.jpg';
 import gamestackTexture from 'assets/gamestack-login.jpg';
-import sliceTextureLarge from 'assets/slice-app-large.jpg';
-import sliceTexturePlaceholder from 'assets/slice-app-placeholder.jpg';
-import sliceTexture from 'assets/slice-app.jpg';
-import sprTextureLarge from 'assets/spr-lesson-builder-dark-large.jpg';
-import sprTexturePlaceholder from 'assets/spr-lesson-builder-dark-placeholder.jpg';
-import sprTexture from 'assets/spr-lesson-builder-dark.jpg';
+
+import sprDesignDarkLarge from 'assets/spr-design-system-dark-large.png';
+import sprDesignDarkPlaceholder from 'assets/spr-design-system-dark-placeholder.png';
+import sprDesignDark from 'assets/spr-design-system-dark.png';
+import sprDesignLightLarge from 'assets/spr-design-system-light-large.png';
+import sprDesignLightPlaceholder from 'assets/spr-design-system-light-placeholder.png';
+import sprDesignLight from 'assets/spr-design-system-light.png';
+import droneBannerLarge from 'assets/drone-banner.jpg';
+import droneBannerPlaceholder from 'assets/drone-banner-placeholder.jpg';
+import droneBanner from 'assets/drone-banner.jpg';
+import geetHubBannerLarge from 'assets/geet-hub-banner.jpg';
+import geetHubBannerPlaceholder from 'assets/geet-hub-banner-placeholder.jpg';
+import geetHubBanner from 'assets/geet-hub-banner.jpg';
 import { Footer } from 'components/Footer';
 import { Meta } from 'components/Meta';
 import { Intro } from 'layouts/Home/Intro';
@@ -19,7 +26,7 @@ import { useEffect, useRef, useState } from 'react';
 import styles from './Home.module.css';
 
 // Roles and skills
-const disciplines = ['Backend Engineer', 'Full-Stack Developer', 'API Designer', 'Open Source Contributor', 'Problem Solver'];
+const disciplines = ['Frontend Engineer', 'React Developer', 'UI Architect', 'Open Source Contributor', 'Problem Solver'];
 
 export const Home = () => {
   const [visibleSections, setVisibleSections] = useState([]);
@@ -70,8 +77,8 @@ export const Home = () => {
   return (
     <div className={styles.home}>
       <Meta
-        title="Software Developer + Engineer"
-        description="Portfolio of Prerak Mathur — a Software Development Engineer II at Walmart Global Tech, specializing in full-stack development, scalable systems, and open source contributions."
+        title="Frontend Engineer + React Developer"
+        description="Portfolio of Prerak Mathur — a Frontend Engineer at Walmart Global Tech specializing in React, TypeScript, and Next.js, building production UI systems and open-source component libraries."
       />
       <Intro
         id="intro"
@@ -84,13 +91,38 @@ export const Home = () => {
         sectionRef={projectOne}
         visible={visibleSections.includes(projectOne.current)}
         index={1}
+        title="Tokis – Open Source React Component Library"
+        description="Built and published a zero-runtime, token-based React UI library on npm with 500+ weekly downloads — accessible WAI-ARIA components, CSS custom properties theming, and a tree-shakeable bundle."
+        buttonText="View project"
+        buttonLink="/projects/tokis"
+        model={{
+          type: 'laptop',
+          alt: 'Tokis component library design system',
+          textures: [
+            {
+              srcSet: [sprDesignDark, sprDesignDarkLarge],
+              placeholder: sprDesignDarkPlaceholder,
+            },
+            {
+              srcSet: [sprDesignLight, sprDesignLightLarge],
+              placeholder: sprDesignLightPlaceholder,
+            },
+          ],
+        }}
+      />
+      <ProjectSummary
+        id="project-2"
+        alternate
+        sectionRef={projectTwo}
+        visible={visibleSections.includes(projectTwo.current)}
+        index={2}
         title="Self-Hosted Cloud Streaming & Storage"
-        description="Built a secure, self-hosted streaming and storage platform with Plex, Docker, and Cloudflare Argo Tunnels for encrypted cross-device access and scalable data management"
+        description="Deployed a containerized streaming platform using Docker with encrypted remote access via Cloudflare Tunnels — implementing a zero-trust architecture with no exposed network ports."
         buttonText="View project"
         buttonLink="/projects/cloud-storage"
         model={{
           type: 'phone',
-          alt: 'Cloud storage app',
+          alt: 'Cloud storage app on mobile',
           textures: [
             {
               srcSet: [gamestackTexture, gamestackTextureLarge],
@@ -104,13 +136,12 @@ export const Home = () => {
         }}
       />
       <ProjectSummary
-        id="project-2"
-        alternate
-        sectionRef={projectTwo}
-        visible={visibleSections.includes(projectTwo.current)}
-        index={2}
+        id="project-3"
+        sectionRef={projectThree}
+        visible={visibleSections.includes(projectThree.current)}
+        index={3}
         title="Drone Development & Data Classification"
-        description="Led a government-funded project to design an affordable open-source quadcopter for agricultural data analysis using Machine Learning. Patent Pending."
+        description="Led a government-funded project for India's Ministry of Science and Technology, developing an open-source drone platform for agricultural ML data analysis. Patent Pending."
         buttonText="View project"
         buttonLink="/projects/drone-project"
         model={{
@@ -118,28 +149,8 @@ export const Home = () => {
           alt: 'Drone data analysis dashboard',
           textures: [
             {
-              srcSet: [sliceTexture, sliceTextureLarge],
-              placeholder: sliceTexturePlaceholder,
-            },
-          ],
-        }}
-      />
-      <ProjectSummary
-        id="project-3"
-        sectionRef={projectThree}
-        visible={visibleSections.includes(projectThree.current)}
-        index={3}
-        title="Geet-Hub: Open Source Music Platform"
-        description="An open-source platform for music creators to edit, remix, and publish their songs with collaborative features and professional-grade audio tools"
-        buttonText="View project"
-        buttonLink="/projects/geet-hub"
-        model={{
-          type: 'laptop',
-          alt: 'Geet-Hub music editor interface',
-          textures: [
-            {
-              srcSet: [sprTexture, sprTextureLarge],
-              placeholder: sprTexturePlaceholder,
+              srcSet: [droneBanner, droneBannerLarge],
+              placeholder: droneBannerPlaceholder,
             },
           ],
         }}
@@ -150,17 +161,17 @@ export const Home = () => {
         sectionRef={projectFour}
         visible={visibleSections.includes(projectFour.current)}
         index={4}
-        title="Faculty Recruitment Portal - IIIT Lucknow"
-        description="Comprehensive recruitment management system for IIIT Lucknow, streamlining the faculty hiring process with automated workflows and real-time tracking"
+        title="Geet-Hub: Open Source Music Platform"
+        description="An open-source platform for music creators to edit, remix, and collaborate — featuring professional-grade audio editing tools, remix workflows, and a community publishing system."
         buttonText="View project"
-        buttonLink="/projects/faculty-portal"
+        buttonLink="/projects/geet-hub"
         model={{
           type: 'laptop',
-          alt: 'Faculty recruitment portal dashboard',
+          alt: 'Geet-Hub music editor interface',
           textures: [
             {
-              srcSet: [sliceTexture, sliceTextureLarge],
-              placeholder: sliceTexturePlaceholder,
+              srcSet: [geetHubBanner, geetHubBannerLarge],
+              placeholder: geetHubBannerPlaceholder,
             },
           ],
         }}

@@ -20,7 +20,7 @@ export const navLinks = [
 export const socialLinks = [
   {
     label: 'LinkedIn',
-    url: 'https://www.linkedin.com/in/Prerak_Mathur',
+    url: 'https://www.linkedin.com/in/prerakmathur20/',
     icon: 'linkedin',
   },
   {

@@ -14,10 +14,9 @@ import {
 import { Fragment } from 'react';
 import styles from './GeetHub.module.css';
 
-// Placeholder imports - replace these with your actual project screenshots
-import geetHubBackgroundPlaceholder from 'assets/slice-background-placeholder.jpg';
-import geetHubBackground from 'assets/slice-background.jpg';
-import geetHubBackgroundLarge from 'assets/slice-background-large.jpg';
+import geetHubBackgroundPlaceholder from 'assets/geet-hub-banner-placeholder.jpg';
+import geetHubBackground from 'assets/geet-hub-banner.jpg';
+import geetHubBackgroundLarge from 'assets/geet-hub-banner.jpg';
 
 const title = 'Geet-Hub: Open Source Music Platform';
 const description =

@@ -14,10 +14,9 @@ import {
 import { Fragment } from 'react';
 import styles from './FacultyPortal.module.css';
 
-// Placeholder imports - replace these with your actual project screenshots
-import portalBackgroundPlaceholder from 'assets/slice-background-placeholder.jpg';
-import portalBackground from 'assets/slice-background.jpg';
-import portalBackgroundLarge from 'assets/slice-background-large.jpg';
+import portalBackgroundPlaceholder from 'assets/slice-background-bar-placeholder.jpg';
+import portalBackground from 'assets/slice-background-bar.jpg';
+import portalBackgroundLarge from 'assets/slice-background-bar-large.jpg';
 
 const title = 'Faculty Recruitment Portal - IIIT Lucknow';
 const description =

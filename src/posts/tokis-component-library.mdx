@@ -1,0 +1,224 @@
+---
+title: 'Building Tokis: A Performance-First Open Source React Component Library'
+abstract: 'How I designed and shipped a zero-runtime, token-based React UI library with 500+ weekly npm downloads — covering component architecture, WAI-ARIA accessibility, CSS custom properties theming, and the open-source publishing workflow.'
+date: '2026-01-15'
+banner: /static/returns-dashboard-banner.jpg
+---
+
+## Why I Built Another Component Library
+
+There's no shortage of React component libraries. So why build one?
+
+The honest answer: every existing library I tried in production came with trade-offs I couldn't live with. Some were enormous bundles. Others used CSS-in-JS that caused SSR hydration mismatches. Several had shallow accessibility support that required me to patch every component before shipping. And almost all of them made theming harder than it needed to be.
+
+I wanted a library that treated performance and accessibility as first-class constraints — not afterthoughts. That's [Tokis](https://prerakmathur20.github.io/TokisWebsite/).
+
+## The Core Constraints
+
+Before writing a single component, I wrote down the non-negotiables:
+
+1. **Zero runtime overhead for theming.** No CSS-in-JS. No JavaScript cost for switching themes.
+2. **Accessibility out of the box.** Every component must implement the relevant [WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/) — keyboard navigation, focus management, roles, states, and properties included.
+3. **Tree-shakeable.** Import one button, pay for one button. Unused components must produce zero bytes in the consumer's bundle.
+4. **Full TypeScript.** Not just types bolted on — strict, ergonomic prop types that guide you at the keyboard.
+5. **Works with any framework.** React is the target, but the theming layer should be portable.
+
+These constraints shaped every architectural decision that followed.
+
+## Theming Without JavaScript
+
+Most component libraries fall into one of two theming camps: CSS-in-JS (styled-components, Emotion) or utility classes (Tailwind). Both have real costs.
+
+CSS-in-JS injects styles at runtime, which means:
+- Extra JavaScript on every page load
+- SSR hydration timing issues
+- Potential flash of unstyled content
+- Theme switching requires JavaScript to run before paint
+
+Tokis takes a third path: **CSS custom properties as design tokens**.
+
+```css
+/* tokens.css — the entire theme lives here */
+:root[data-theme='light'] {
+  --color-surface: #ffffff;
+  --color-on-surface: #1a1a1a;
+  --color-primary: #4f46e5;
+  --color-on-primary: #ffffff;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --radius-md: 6px;
+}
+
+:root[data-theme='dark'] {
+  --color-surface: #0f0f0f;
+  --color-on-surface: #f5f5f5;
+  --color-primary: #818cf8;
+  --color-on-primary: #1e1b4b;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --radius-md: 6px;
+}
+```
+
+Components reference only semantic tokens — never raw values:
+
+```css
+/* Button.module.css */
+.button {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-md);
+}
+```
+
+Switching themes is now a single attribute change on the root element — zero JavaScript, zero flicker, works before paint. The theme initialization script applies `data-theme` to the document before the first frame renders, reading from `localStorage` or falling back to the OS preference via `prefers-color-scheme`.
+
+```js
+// Applied in a blocking <script> before React hydrates
+(function () {
+  const stored = localStorage.getItem('theme');
+  const system = window.matchMedia('(prefers-color-scheme: dark)').matches
+    ? 'dark'
+    : 'light';
+  document.documentElement.setAttribute('data-theme', stored ?? system);
+})();
+```
+
+No flash. No hydration mismatch. No runtime cost.
+
+## Accessibility as a Design Constraint
+
+Accessibility is often treated as a checklist you run at the end. For Tokis, it's a design constraint from the start — which means it actually gets done.
+
+For every component I asked: what is the [ARIA authoring practice](https://www.w3.org/WAI/ARIA/apg/) for this pattern?
+
+Take a modal dialog. The spec says:
+- Focus must move into the dialog on open
+- Focus must be trapped inside the dialog while open
+- `Escape` must close it
+- Focus must return to the trigger on close
+- The dialog must have `role="dialog"` and `aria-modal="true"`
+- A visible label must be associated via `aria-labelledby`
+
+Most libraries implement one or two of these. Tokis implements all of them, every time.
+
+```tsx
+// Dialog.tsx — all accessibility behaviors built in
+export function Dialog({ open, onClose, title, children }: DialogProps) {
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const titleId = useId();
+
+  useFocusTrap(dialogRef, open);
+  useRestoreFocus(open);
+
+  useEffect(() => {
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    if (open) document.addEventListener('keydown', handleEsc);
+    return () => document.removeEventListener('keydown', handleEsc);
+  }, [open, onClose]);
+
+  if (!open) return null;
+
+  return (
+    <div
+      ref={dialogRef}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby={titleId}
+    >
+      <h2 id={titleId}>{title}</h2>
+      {children}
+    </div>
+  );
+}
+```
+
+The `useFocusTrap` and `useRestoreFocus` hooks are part of Tokis's internal hook library — reusable across components that need similar behavior (menus, popovers, sheets).
+
+## The Bundle Architecture
+
+Tree-shaking is non-negotiable. A component library that forces consumers to load everything is a library that gets removed from projects.
+
+The build uses [Vite in library mode](https://vitejs.dev/guide/build.html#library-mode), outputting:
+
+- **ESM** (`dist/index.esm.js`) — for modern bundlers that support tree-shaking
+- **CJS** (`dist/index.cjs.js`) — for legacy Node.js consumers
+- **Type declarations** (`dist/index.d.ts`) — generated by `tsc`
+
+The `package.json` `exports` field points bundlers to the right format:
+
+```json
+{
+  "exports": {
+    ".": {
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.cjs.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "sideEffects": ["**/*.css"]
+}
+```
+
+The `sideEffects` declaration is crucial: it tells bundlers that CSS files cannot be tree-shaken (they have side effects), but JS modules can. This lets Webpack and Rollup eliminate unused components completely.
+
+## TypeScript API Design
+
+Good TypeScript types aren't just annotations — they're part of the API. A well-typed component library guides you to the pit of success.
+
+A few principles I followed:
+
+**Discriminated unions over boolean props.** Instead of `<Button loading disabled>`, use variant types that make invalid states unrepresentable:
+
+```tsx
+type ButtonState =
+  | { status: 'idle' }
+  | { status: 'loading'; loadingText?: string }
+  | { status: 'disabled'; disabledReason?: string };
+```
+
+**Polymorphic components with `as` prop.** Let consumers change the underlying HTML element without losing type safety:
+
+```tsx
+type ButtonProps<C extends ElementType = 'button'> = {
+  as?: C;
+} & ComponentPropsWithRef<C>;
+```
+
+**Strict size/variant enums.** Document the design system vocabulary at the type level, not just in docs.
+
+## Open Source Workflow
+
+Shipping `v1.0.0` is one thing. Maintaining a library with real users is another.
+
+The workflow that's worked:
+
+- **Changesets** for versioning — contributors submit changesets alongside PRs, and the release bot handles changelog generation and npm publishing automatically
+- **Storybook** for documentation — each component has stories for all states, including edge cases and accessibility demonstrations
+- **Automated accessibility tests** with `axe-core` in Storybook — every story runs an a11y audit on render
+- **GitHub Actions** for CI — lint, types, build, and a11y checks on every PR
+
+The most underrated part of open source maintenance is keeping the documentation honest. A component that works but has confusing docs is a component people won't adopt.
+
+## What 500+ Weekly Downloads Means
+
+When I first published Tokis I wasn't expecting much. The npm counter climbing to 500+ weekly downloads was a surprise.
+
+Most of those installs come from developers evaluating libraries for new projects — the Storybook documentation makes it easy to see what you're getting before installing. Some are from teams that found Tokis's accessibility story compelling. A few are from people who wanted a lightweight base for their own design system and extended the token system.
+
+What I've learned from the issue tracker is that the features people care most about aren't always the ones you expect. The `useRestoreFocus` hook has been extracted and used standalone more than any other utility. The zero-FOUC theme script gets copy-pasted into projects that don't even use Tokis components.
+
+That's probably the best outcome for an open source library: pieces of it become useful beyond its intended scope.
+
+## What's Next
+
+Tokis is still evolving. A few things on the roadmap:
+
+- **More complex patterns**: data tables, date pickers, and comboboxes are on deck — these are the components where accessibility is hardest to get right and where most libraries fall short
+- **Animation tokens**: extend the token system to include motion (duration, easing) so animations can be themed alongside colors and spacing
+- **React Server Components compatibility**: ensure all components work in RSC-first architectures without wrapping in `'use client'` boundaries unnecessarily
+
+If you want to follow along or contribute: the repo is at [github.com/PrerakMathur20](https://github.com/PrerakMathur20) and the documentation is at the Tokis website. Issues and PRs welcome.
