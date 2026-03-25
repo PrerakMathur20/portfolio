@@ -201,14 +201,15 @@ export const Navbar = () => {
 
 const NavbarIcons = ({ desktop }) => (
   <div className={styles.navIcons}>
-    {socialLinks.map(({ label, url, icon }) => (
+    {socialLinks.map(({ label, url, icon, download }) => (
       <a
         key={label}
         data-navbar-item={desktop || undefined}
         className={styles.navIconLink}
         aria-label={label}
         href={url}
-        target="_blank"
+        download={download ? 'PrerakMathur-Resume.pdf' : undefined}
+        target={download ? '_self' : '_blank'}
         rel="noopener noreferrer"
       >
         <Icon className={styles.navIcon} icon={icon} />

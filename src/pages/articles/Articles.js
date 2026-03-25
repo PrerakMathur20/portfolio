@@ -159,7 +159,7 @@ export const Articles = ({ posts, featured }) => {
   const postList = (
     <div className={styles.list}>
       {!isSingleColumn && postsHeader}
-      {posts.map(({ slug, featured: _f, ...post }, index) => (
+      {posts.map(({ slug, featured: _featured, ...post }, index) => (
         <ArticlesPost key={slug} slug={slug} index={index} featured={false} {...post} />
       ))}
       {Array(2)

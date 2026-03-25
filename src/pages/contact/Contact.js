@@ -59,7 +59,12 @@ export const Contact = () => {
       setSending(false);
     } catch (error) {
       setSending(false);
-      setStatusError(error.message);
+      // Fallback: open mailto with prefilled content
+      const subject = encodeURIComponent('Message from portfolio');
+      const body = encodeURIComponent(
+        `From: ${email.value}\n\n${message.value}`
+      );
+      window.location.href = `mailto:mathur.prerak@gmail.com?subject=${subject}&body=${body}`;
     }
   };
 

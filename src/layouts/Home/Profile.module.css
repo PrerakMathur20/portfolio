@@ -116,6 +116,19 @@
   width: 100%;
 }
 
+.developerIllustration {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  opacity: 0;
+  transition: opacity var(--durationXL) ease var(--durationM);
+  display: block;
+
+  &[data-visible='true'] {
+    opacity: 1;
+  }
+}
+
 .svg {
   position: absolute;
   right: 0;

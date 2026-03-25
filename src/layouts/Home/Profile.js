@@ -1,17 +1,13 @@
 import profileKatakana from 'assets/katakana-profile.svg?url';
-import profileImgLarge from 'assets/profile-large.jpg';
-import profileImgPlaceholder from 'assets/profile-placeholder.jpg';
-import profileImg from 'assets/profile.jpg';
+import developerAnimation from 'assets/developer-animation.svg?url';
 import { Button } from 'components/Button';
 import { DecoderText } from 'components/DecoderText';
 import { Divider } from 'components/Divider';
 import { Heading } from 'components/Heading';
-import { Image } from 'components/Image';
 import { Section } from 'components/Section';
 import { Text } from 'components/Text';
 import { Transition } from 'components/Transition';
 import { Fragment, useState } from 'react';
-import { media } from 'utils/style';
 import styles from './Profile.module.css';
 
 const ProfileText = ({ visible, titleId }) => (
@@ -20,16 +16,16 @@ const ProfileText = ({ visible, titleId }) => (
       <DecoderText text="Hi there" start={visible} delay={500} />
     </Heading>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
-      I&apos;m Prerak, a Frontend Engineer at Walmart Global Tech with 2+ years building
-      production UI systems. I specialize in React, TypeScript, and Next.js — from internal
-      analytics dashboards to open-source component libraries. I care deeply about
-      component architecture, accessibility, and performance.
+      I&apos;m Prerak, a Full-Stack Engineer at Walmart Global Tech with 2+ years building
+      production systems end-to-end. I work across the stack — React, TypeScript, and
+      Next.js on the frontend; Java, Spring Boot, Kafka, and GCP on the backend. I care
+      deeply about component architecture, system design, and performance.
     </Text>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
       Outside of work I maintain Tokis, an open-source React UI library with 500+ weekly
       downloads, and contribute to projects like Internet Archive and CircuitVerse. I&apos;m
       also a Codeforces Specialist and Google Summer of Code 2022 contributor. Always happy
-      to chat about frontend craft, open source, or competitive programming!
+      to chat about full-stack engineering, open source, or distributed systems!
     </Text>
   </Fragment>
 );
@@ -77,13 +73,13 @@ export const Profile = ({ id, visible, sectionRef }) => {
                 </div>
               </div>
               <div className={styles.image}>
-                <Image
-                  reveal
-                  delay={100}
-                  placeholder={profileImgPlaceholder}
-                  srcSet={[profileImg, profileImgLarge]}
-                  sizes={`(max-width: ${media.mobile}px) 100vw, 480px`}
-                  alt="Prerak Mathur"
+                <img
+                  src={developerAnimation}
+                  alt="Developer illustration"
+                  className={styles.developerIllustration}
+                  data-visible={visible}
+                  width="480"
+                  height="540"
                 />
                 <svg
                   aria-hidden="true"

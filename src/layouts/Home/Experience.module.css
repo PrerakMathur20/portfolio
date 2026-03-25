@@ -1,0 +1,212 @@
+.experience {
+  width: 100vw;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  display: flex;
+  justify-content: center;
+
+  @media (--mediaTablet) {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    padding-right: 80px;
+    padding-left: 160px;
+  }
+
+  @media (--mediaMobile), (--mediaMobileLS) {
+    padding-top: var(--space4XL);
+    padding-bottom: var(--space4XL);
+    padding-right: var(--spaceOuter);
+    padding-left: var(--spaceOuter);
+  }
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  grid-column-gap: var(--space4XL);
+  max-width: var(--maxWidthL);
+  width: 100%;
+
+  @media (--mediaTablet) {
+    grid-template-columns: 100%;
+    gap: var(--space2XL);
+    max-width: 600px;
+  }
+}
+
+.tag {
+  display: grid;
+  grid-template-columns: var(--space4XL) 1fr;
+  gap: 12px;
+  align-items: center;
+  align-self: start;
+  padding-top: 6px;
+
+  @media (--mediaTablet) {
+    padding-top: 0;
+  }
+}
+
+.tagText {
+  font-size: var(--fontSizeBodyS);
+  font-weight: var(--fontWeightMedium);
+  color: rgb(var(--rgbPrimary));
+  opacity: 0;
+  transition-property: opacity;
+  transition-timing-function: var(--bezierFastoutSlowin);
+  transition-duration: var(--durationM);
+  transition-delay: 1.3s;
+
+  @media (--mediaUseMotion) {
+    transition-property: opacity, transform;
+    transform: translate3d(calc(var(--spaceM) * -1), 0, 0);
+  }
+
+  &[data-visible='true'] {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space3XL);
+}
+
+.title {
+  white-space: nowrap;
+  margin-bottom: var(--spaceL);
+  opacity: 0;
+  transition: opacity var(--durationXL) ease var(--durationM);
+
+  &[data-visible='true'] {
+    opacity: 1;
+  }
+
+  @media (--mediaTablet) {
+    white-space: normal;
+  }
+}
+
+.item {
+  display: grid;
+  gap: var(--spaceL);
+  opacity: 0;
+  padding-left: var(--spaceXL);
+  border-left: 2px solid rgb(var(--rgbText) / 0.1);
+  transition: opacity var(--durationXL) ease
+    calc(var(--durationM) + calc(var(--item-index, 0) * 100ms));
+
+  &[data-visible='true'] {
+    opacity: 1;
+  }
+
+  &[data-education='true'] {
+    border-left-color: rgb(var(--rgbPrimary) / 0.4);
+  }
+
+  @media (--mediaMobile), (--mediaMobileLS) {
+    padding-left: var(--spaceL);
+  }
+}
+
+.itemToggle {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spaceM);
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+  color: inherit;
+
+  &:focus-visible {
+    outline: 2px solid rgb(var(--rgbPrimary));
+    outline-offset: 4px;
+    border-radius: 4px;
+  }
+}
+
+.itemChevron {
+  font-size: 1.4rem;
+  color: rgb(var(--rgbPrimary));
+  transition: transform var(--durationM) ease;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 2px;
+
+  &[data-open='true'] {
+    transform: rotate(90deg);
+  }
+}
+
+.itemHeader {
+  display: grid;
+  gap: var(--spaceXS);
+  flex: 1;
+}
+
+.itemMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--spaceM);
+  flex-wrap: wrap;
+}
+
+.itemCompany {
+  color: rgb(var(--rgbPrimary));
+}
+
+.itemPeriod {
+  color: rgb(var(--rgbText) / 0.5);
+  white-space: nowrap;
+}
+
+.itemRole {
+  margin: 0;
+  font-weight: var(--fontWeightMedium);
+}
+
+.itemLocation {
+  margin: 0;
+  color: rgb(var(--rgbText) / 0.5);
+}
+
+.bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: var(--spaceS);
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height var(--durationL) ease, opacity var(--durationM) ease;
+
+  &[data-open='true'] {
+    max-height: 400px;
+    opacity: 1;
+  }
+}
+
+.bullet {
+  display: grid;
+  grid-template-columns: 12px 1fr;
+  gap: var(--spaceM);
+  color: rgb(var(--rgbText) / 0.8);
+
+  &::before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: rgb(var(--rgbPrimary));
+    margin-top: 8px;
+    justify-self: center;
+  }
+}

@@ -1,10 +1,18 @@
 export const navLinks = [
   {
     label: 'Projects',
-    pathname: '/#project-1',
+    pathname: '/projects',
   },
   {
-    label: 'Details',
+    label: 'Experience',
+    pathname: '/#experience',
+  },
+  {
+    label: 'Skills',
+    pathname: '/#skills',
+  },
+  {
+    label: 'About',
     pathname: '/#details',
   },
   {
@@ -27,6 +35,12 @@ export const socialLinks = [
     label: 'Github',
     url: 'https://github.com/PrerakMathur20',
     icon: 'github',
+  },
+  {
+    label: 'Resume',
+    url: '/resume.pdf',
+    icon: 'download',
+    download: true,
   },
   {
     label: 'Email',
