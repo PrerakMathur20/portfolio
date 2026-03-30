@@ -208,7 +208,7 @@ const NavbarIcons = ({ desktop }) => (
         className={styles.navIconLink}
         aria-label={label}
         href={url}
-        download={download ? 'PrerakMathur-Resume.pdf' : undefined}
+        download={download ? 'PrerakMathurResume.pdf' : undefined}
         target={download ? '_self' : '_blank'}
         rel="noopener noreferrer"
       >
