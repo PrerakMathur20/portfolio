@@ -43,7 +43,7 @@ export const Tokis = () => {
         <ProjectHeader
           title={title}
           description={description}
-          url="https://www.npmjs.com/package/tokis"
+          url="https://www.npmjs.com/package/@tokis/tokis"
           roles={roles}
         />
         <ProjectSection padding="top">
